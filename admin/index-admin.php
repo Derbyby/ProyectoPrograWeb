@@ -33,8 +33,8 @@ if (!isset($_SESSION['nombre'])) {
             } else {
                 echo '<div class="container-fluid">';
                 echo '<div class="text-center vertical-center">';
-                echo '<img class="img-fluid" src="img/undraw_tabs.svg" alt="Content Image"
-                                    height="auto">';
+                echo '<a href="/index.php"><img class="img-fluid" src="img/undraw_tabs.svg" alt="Content Image"
+                                    height="auto"></a>';
                 echo '</div>';
                 echo '</div>';
             }

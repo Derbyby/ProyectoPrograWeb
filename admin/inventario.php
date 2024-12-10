@@ -75,8 +75,29 @@ include 'header.php';
         </div>
     </div>
 
+    <!-- Script para búsqueda -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const searchBar = document.getElementById('searchBar');
+            const productTable = document.getElementById('productTable').getElementsByTagName('tbody')[0];
+
+            searchBar.addEventListener('input', () => {
+                const filter = searchBar.value.toLowerCase();
+                const rows = productTable.getElementsByTagName('tr');
+
+                for (let row of rows) {
+                    const id = row.cells[0].textContent.toLowerCase();
+                    const name = row.cells[1].textContent.toLowerCase();
+
+                    if (id.includes(filter) || name.includes(filter)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+
+            // Mostrar modal si existe un estado
             const status = "<?php echo $status; ?>";
             if (status) {
                 const modal = new bootstrap.Modal(document.getElementById('statusModal'));
@@ -84,6 +105,5 @@ include 'header.php';
             }
         });
     </script>
-
 
     <?php include 'footer.php'; ?>
