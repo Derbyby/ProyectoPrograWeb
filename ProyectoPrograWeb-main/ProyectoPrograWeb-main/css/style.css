@@ -1,0 +1,555 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    scroll-padding: 2rem;
+}
+
+:root {
+    --verde-clarito: #DCF0EE;
+    --verde-verde: #C6E0C7;
+    --azul: #C7EBFB;
+    --verde: #D3E5A7;
+    --azul-verde: #ACDEE7;
+    --verde-tierra: #D5E7CF;
+    --verde-oscuro: #04A583;
+    --azul-oscuro: #86DDF9;
+    --morado: #A8B8CF;
+    --amarillo: #F3DA8A;
+    --turquesa: #16B5C8;
+    --blanco: #FFFF;
+    --negro: #000000;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--blanco);
+    /* Azul verdoso claro */
+}
+
+header {
+    background-color: var(--azul-verde);
+    /* Verde oscuro */
+    color: #A8E6CF;
+    /* Verde claro */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 0.3%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.a input[type="text"] {
+    background-color: #444;
+    /* Verde oscuro */
+    color: #A8E6CF;
+    /* Verde claro */
+}
+
+/* .logo {
+    flex: 1;
+    margin-inline: auto;
+    color: var(--turquesa);
+    height:fit-content;
+} */
+
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    flex: 1.6;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border: 1px solid var(--blanco);
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    width: 50%;
+}
+
+.search-bar button {
+    padding: 9px 15px;
+    border: none;
+    background-color: var(--verde);
+    color: var(--blanco);
+    border-radius: 0 3px 3px 0;
+    width:auto;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--verde-verde);
+    /* Verde oscuro */
+    color: #004D40;
+}
+
+nav {
+    background-color: var(--verde);
+    /* Azul verdoso oscuro */
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #004D40;
+    /* Verde claro */
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.logo {
+    padding: 0.1rem;
+    padding-bottom: 0rem;
+    max-height: auto;
+    min-height: auto;
+    width: 35%;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        flex: 1;
+        margin-inline: auto;
+        color: var(--turquesa);
+        height: auto;
+        width: 100%;
+        padding-left: 0rem;
+    }
+}
+
+@media (width: 768px) {
+    .logo {
+        flex: 1;
+        margin-inline: auto;
+        color: var(--turquesa);
+        height: auto;
+        width: 92%;
+        padding-left: 0rem;
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background-color: var(--amarillo);
+    border: 1px solid --verde;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    max-width: 300px;
+    transition: transform 0.1s;
+    flex: 1 1 calc(25% - 20px);
+}
+
+/* .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+} */
+
+@media (max-width: 1024px) {
+    .product {
+        flex: 1 1 calc(33.33% - 20px); /* 3 columnas en pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) {
+    .product {
+        flex: 1 1 calc(50% - 20px); /* 2 columnas en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .product {
+        flex: 1 1 100%; /* 1 columna en pantallas muy pequeñas */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .product {
+        margin: 10px;
+    }
+}
+
+.product:hover {
+    transform: scale(1.01);
+    /* Aumenta ligeramente el tamaño al pasar el cursor */
+}
+
+/* .product img {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+} */
+.product img {
+    width: 100%;
+    height: auto; /* Mantén la proporción de las imágenes */
+    border-radius: 8px;
+}
+
+.nombre {
+    margin: 10px 0;
+    text-decoration: none;
+    color: #004D40;
+    font-size: 21px;
+}
+
+.precio {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .nombre {
+        font-size: 16px;
+    }
+
+    .precio {
+        font-size: 14px;
+    }
+}
+
+.btn-primary {
+    background-color: var(--verde-oscuro);
+    border: 1px solid var(--verde-oscuro);
+}
+
+.btn-outline-primary {
+    border: 1px solid var(--verde-oscuro);
+    color: var(--verde-oscuro);
+    background-color: var(--verde-tierra);
+}
+
+.btn:hover {
+    background-color: var(--amarillo);
+    border: 1px solid var(--verde-oscuro);
+    color: #004D40;
+}
+
+/* .img-product {
+    width: 300px;
+    height: 300px;
+} */
+
+footer {
+    background-color: var(--verde);
+    /* Color de fondo */
+    color: var(--verde-oscuro);
+    /* Color de texto */
+    text-align: center;
+    padding: 10px 0;
+    /* Aumenta el padding para mayor comodidad visual */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1000;
+    /* Asegura que el footer esté por encima de otros elementos */
+}
+
+footer p {
+    margin: 0;
+    /* Elimina el margen predeterminado de los párrafos */
+    font-size: 14px;
+    /* Ajusta el tamaño de fuente para mejor legibilidad */
+    font-weight: 500;
+    /* Añade un peso intermedio al texto */
+}
+
+@media screen and (max-width: 768px) {
+    footer {
+        padding: 15px 0;
+        /* Aumenta el padding en dispositivos pequeños */
+        font-size: 12px;
+        /* Reduce el tamaño de la fuente en pantallas pequeñas */
+    }
+}
+
+/* Carrito */
+#cart-icon {
+    color: #004D40;
+    margin-inline-end: auto;
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    cursor: pointer;
+}
+
+#cart-icon:hover {
+    color: #444;
+}
+
+.cart {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 360px;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    background-color: var(--azul);
+    box-shadow: -2px 4px 15px hsla(0, 4%, 15%, 0.1);
+    border: 1px solid var(--azul);
+    transition: 0.5s ease;
+    z-index: 1000; 
+}
+
+.cart.active {
+    right: 0;
+}
+
+.cart-title {
+    color: #004D40;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+.cart-box {
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.cart-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+.detail-box {
+    display: flex;
+    align-items: center;
+}
+
+.cart-product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-product-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.cart-price {
+    font-weight: 500;
+}
+
+.cart-quantity {
+    border: 1px solid var(--verde);
+    outline-color: var(--verde);
+    width: 1.4rem;
+    text-align: start;
+    font-size: 1rem;
+}
+
+.car-remove {
+    font-size: 50px;
+    color: var(--verde);
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    border-top: 1px solid var(--verde);
+    padding: 20px 0;
+}
+
+.total-title {
+    margin-left: auto;
+    color: #004D40;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.total-price {
+    margin-left: 0.5rem;
+    color: #004D40;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.btn-buy {
+    display: block;
+    margin: 1.5rem auto 0;
+    padding: 12px 20px;
+    border: none;
+    background-color: var(--verde);
+    color: #004D40;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-buy:hover {
+    background-color: var(--blanco);
+    /* Azul verdoso claro */
+    color: var(--verde);
+}
+
+#cart-close {
+    position: absolute;
+    top: 1rem;
+    right: 0.8rem;
+    font-size: 2rem;
+    color: var(--verde);
+    cursor: pointer;
+}
+
+/* Usuario */
+#user-icon {
+    color: #004D40;
+    margin-inline-end: auto;
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    cursor: pointer;
+}
+
+#user-icon:hover {
+    color: #444;
+}
+
+/* Administrador */
+#admin-icon {
+    color: #004D40;
+    margin-inline-end: auto;
+    font-size: clamp(1em, 5vw, 2rem);
+    cursor: pointer;
+}
+
+#admin-icon:hover {
+    color: #444;
+}
+
+/* Slider automático */
+.slider-frame {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-frame ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 1s ease-in-out;
+}
+
+.slider-frame li {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.slider-frame img{
+    width: 100%; /* Deja que el ancho se ajuste automáticamente */
+    object-fit: cover; /* Asegura que la imagen se escale proporcionalmente dentro del contenedor */
+    margin: 0;
+    padding: 0;
+}
+
+.container-slider {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden; 
+    position: relative;
+    z-index: 1;
+}
+
+/*Razas*/
+.razas-principal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap; /* Permite que los elementos se acomoden en varias filas en pantallas más pequeñas */
+    gap: 2rem; /* Espaciado entre los elementos */
+    padding: 1rem; /* Margen interno para evitar que los elementos se peguen a los bordes */
+
+}
+
+.razas {
+    height: 15rem;
+    width: 15rem;
+    background-color: #86DDF9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+/* Texto debajo del círculo */
+.razas-principal h3 {
+    margin-top: 0.5rem; /* Espaciado superior con respecto al círculo */
+    text-align: center; /* Centra el texto */
+    font-family:'sans-serif'; /* Fuente atractiva */
+    font-size: 1.2rem; /* Tamaño de fuente */
+    color:#444;
+}
+
+.imagenes img {
+    width: 85%; 
+    height: 70%; 
+    object-fit: contain; 
+    display: block; 
+}
+
+
+/* Media Queries para pantallas medianas */
+@media (max-width: 768px) {
+    .razas {
+        flex-direction: row;
+        height: 20vw;
+        width: 20vw;
+        max-height: 12rem;
+        max-width: 12rem;
+    }
+}
+
+/* Media Queries para pantallas pequeñas (celulares) */
+@media (max-width: 600px) {
+    .razas-principal {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 2rem; 
+    }
+
+    .razas {
+        height: 30vw; 
+        width: 30vw;
+        max-height: 15rem;
+        max-width: 15rem;
+    }
+}

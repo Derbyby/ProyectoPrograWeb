@@ -1,0 +1,156 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px !important;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 10px;
+    color: #343a40;
+}
+
+/* Estilo para tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+td {
+    background-color: #f8f9fa;
+}
+
+td a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+td a:hover {
+    color: #0056b3;
+}
+
+td .btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+td .btn-danger {
+    background-color: #dc3545;
+}
+
+td .btn:hover {
+    background-color: #218838;
+}
+
+td .btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Estilo para formularios */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+form input[type="checkbox"] {
+    margin-left: 10px;
+    margin-bottom: 2px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos de mensajes de error */
+.error-messages p {
+    color: red;
+    font-weight: bold;
+}
+
+#searchBar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+.activo{
+    display: flex;
+    padding-bottom: 15px;
+}
+
+/* Estilo para el formulario de edición */
+
+form div {
+    margin-bottom: 15px;
+}
