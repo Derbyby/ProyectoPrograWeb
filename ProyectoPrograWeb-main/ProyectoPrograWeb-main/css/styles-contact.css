@@ -1,0 +1,93 @@
+/* Globales */
+* {
+    font-family: Arial, sans-serif;;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    scroll-padding: 2rem;
+}
+
+/* Variables */
+:root {
+    --verde-clarito: #DCF0EE;
+    --verde-verde: #C6E0C7;
+    --azul: #C7EBFB;
+    --verde: #D3E5A7;
+    --azul-verde: #ACDEE7;
+    --verde-tierra: #D5E7CF;
+    --verde-oscuro: #04A583;
+    --azul-oscuro: #86DDF9;
+    --azul-clarito: #EDF9FF;
+    --morado: #A8B8CF;
+    --amarillo: #F3DA8A;
+    --turquesa: #16B5C8;
+    --blanco: #FFFF;
+    --negro: #000000;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--blanco); /* Azul claro */
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: var(--azul-clarito); /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+}
+
+h2.title-contacto {
+    font-size: 1.8rem;
+    color: var(--verde-oscuro); /* Verde oscuro */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #006064; /* Azul verdoso */
+}
+
+input[type="text"], input[type="phone"] {
+    padding: 10px;
+    border: 1px solid #76D7C4; /* Verde azulado */
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="phone"]:focus {
+    border-color: #004D40; /* Verde oscuro */
+    box-shadow: 0 0 8px rgba(0, 77, 64, 0.2);
+}
+
+#paypal-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+
