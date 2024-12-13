@@ -22,6 +22,9 @@ if(is_array($datos)){
     $id = $con->lastInsertId();
 
     if($id > 0){
+        session_start();  // Inicia la sesión
+        $_SESSION['id_transaccion'] = $id_transaccion;  // Almacena el id en la sesión
+
         $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
         if($productos != null){
@@ -31,6 +34,7 @@ if(is_array($datos)){
                 $row_prod = $sql->fetch(PDO::FETCH_ASSOC);
 
                 $precio = $row_prod['precio'];
+                
                 $descuento = $row_prod['descuento'];
                 $precio_desc = $precio - (($precio * $descuento) / 100);
 
@@ -39,8 +43,11 @@ if(is_array($datos)){
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
 
             }
-            include '../recibo.php';
         }
         unset($_SESSION['carrito']);
+        // Redirige a la página de recibo con la transacción
+        header("Location: /recibo.php");
+        exit; 
     }
 }
+?>

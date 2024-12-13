@@ -35,29 +35,29 @@ function addProducto(id, token, nombre, imagen, precio) {
 
    console.log("Estado actual del carrito:", cartItems); // Debugging
    updateCartUI();
+
+   // Enviar los datos al servidor (opcional, para sincronizar)
+   let url = 'php/carrito.php';
+   let formData = new FormData();
+   formData.append('id', id);
+   formData.append('token', token);
+
+   fetch(url, {
+       method: 'POST',
+       body: formData,
+       mode: 'cors'
+   })
+       .then(response => response.json())
+       .then(data => {
+           if (data.ok) {
+               const elemento = document.getElementById("num_cart");
+               elemento.innerHTML = data.numero; // Actualizar número del carrito en la interfaz
+           }
+       })
+       .catch(error => {
+           console.error('Error al agregar al carrito:', error);
+       });
 }
-
-    // Enviar los datos al servidor (opcional, para sincronizar)
-    let url = 'php/carrito.php';
-    let formData = new FormData();
-    formData.append('id', id);
-    formData.append('token', token);
-
-    fetch(url, {
-        method: 'POST',
-        body: formData,
-        mode: 'cors'
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.ok) {
-                let elemento = document.getElementById("num_cart");
-                elemento.innerHTML = data.numero; // Actualizar número del carrito en la interfaz
-            }
-        })
-        .catch(error => {
-            console.error('Error al agregar al carrito:', error);
-        });
         function updateCartUI() {
          const cartContent = document.querySelector(".cart-content");
          const totalPriceElement = document.querySelector(".total-price");

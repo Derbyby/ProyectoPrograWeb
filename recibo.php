@@ -6,7 +6,7 @@ require 'php/config.php';
 $db = new Database();
 $con = $db->conectar();
 
-$id_transaccion = isset($_GET['key']) ? $_GET['key'] : 0;
+$id_transaccion = isset($_SESSION['id_transaccion']) ? $_SESSION['id_transaccion'] : 0;
 
 $error = "";
 if($id_transaccion == ''){
@@ -71,6 +71,8 @@ $detalles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 */
 
 // Agregar contenido al PDF
+$moneda = "$";
+$format = number_format($total, 2, '.', ',');
 $htmlContent = '';
 $htmlContent .= <<<EOD
     <div class="container">
@@ -92,7 +94,7 @@ EOD;
             <br>
             <b>Fecha de compra:</b> {$fecha}
             <br>
-            <b>Total:</b> {MONEDA} {number_format($total, 2, '.', ',')}
+            <b>Total:</b> {$moneda} {$format}
             <br>
         </div>
     </div>

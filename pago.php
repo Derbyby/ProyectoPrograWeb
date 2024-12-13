@@ -1,5 +1,5 @@
 <?php
-include 'header.html';
+include 'html/header.html';
 require 'php/database.php';
 require 'php/config.php';
 $db = new Database();
@@ -50,13 +50,12 @@ if($productos != null){
                                     <th>Subtotal</th>
                                 </tr>
                             </thead>
-                        </table>
-                        <tbody>
-                            <?php if($lista_carrito == null) {
+                            <tbody>
+                                <?php if($lista_carrito == null) {
                             echo '<tr><td colspan="5" class="test-center"><b>Lista vacia</b></td></tr>';
                             }else{
                                 $total = 0;
-                                foreach($lista_carrito as $productos){
+                                foreach($lista_carrito as $producto){
                                     $_id = $producto['id'];
                                     $nombre = $producto['nombre'];
                                     $precio = $producto['precio'];
@@ -67,23 +66,25 @@ if($productos != null){
                                     $total += $subtotal;
 
                                 ?>
-                            <tr>
-                                <td><?php echo $nombre; ?></td>
-                                <td>
-                                    <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . 
-                                                number_format($subtotal, 2, '.', ',',); ?></div>
-                                </td>
-                            </tr>
-                            <?php } ?>
+                                <tr>
+                                    <td><?php echo $nombre; ?></td>
+                                    <td>
+                                        <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"><?php echo MONEDA . 
+                                                number_format($subtotal, 2, '.', ','); ?></div>
+                                    </td>
+                                </tr>
+                                <?php } ?>
 
-                            <tr>
-                                <td colspan="2">
-                                    <p class="h3 text-end" id="total"><?php echo MONEDA . number_format($total, 2, '.', ','); ?>
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <?php } ?>
+                                <tr>
+                                    <td colspan="2">
+                                        <p class="h3 text-end" id="total">
+                                            <?php echo MONEDA . number_format($total, 2, '.', ','); ?>
+                                        </p>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                            <?php } ?>
                         </table>
                     </div>
 
@@ -91,12 +92,12 @@ if($productos != null){
             </div>
         </div>
     </main>
-    
+
     <script
         src="https://sandbox.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&amp;currency=<?php echo CURRENCY; ?>&amp;locale=es_MX&amp;components=buttons"
         data-uid-auto="uid_fhbvmixthzieuaiissdjhttpumbzdh"></script>
 
-        <script>
+    <script>
     paypal.Buttons({
         style: {
             color: 'blue',
@@ -114,20 +115,21 @@ if($productos != null){
         },
 
         onApprove: function(data, actions) {
-            let URL = 'clases/captura.php' 
+            let url = '../admin/clases/captura.php'
             actions.order.capture().then(function(detalles) {
                 console.log(detalles);
-
-                let url = 'clases/captura.php'
 
                 return fetch(url, {
                     method: 'post',
                     headers: {
-                        'content-type': 'aplication/json'
+                        'content-type': 'application/json'
                     },
                     body: JSON.stringify({
-                        detalles : detalles
+                        detalles: detalles
                     })
+                }).then(function(response){
+                    window.open("recibo.php", "Recibo de Compra");
+                    window.location.href="index.php";
                 })
             });
         },
@@ -142,3 +144,4 @@ if($productos != null){
 </body>
 
 </html>
+<?

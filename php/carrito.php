@@ -1,6 +1,5 @@
 <?php
 session_start();
-header('Content-Type: application/json');
 require 'config.php';
 
 // Verifica si los datos se están recibiendo
