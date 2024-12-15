@@ -8,6 +8,7 @@ $con = $db->conectar();
 
 $id_transaccion = isset($_SESSION['id_transaccion']) ? $_SESSION['id_transaccion'] : 0;
 
+$total="";
 $error = "";
 if($id_transaccion == ''){
     $error = 'Error al procesar la peticion';
