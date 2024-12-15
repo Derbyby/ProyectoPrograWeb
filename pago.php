@@ -5,15 +5,29 @@ require_once 'php/config.php';
 $db = new Database();
 $con = $db->conectar();
 
-$productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+$productos = null;
+
+if ($id) {
+    $sql = $con->prepare("SELECT id, nombre, precio, descuento, 1 AS cantidad FROM productos WHERE id = ? AND activo = 1");
+    $sql->execute([$id]);
+    $productos = [$sql->fetch(PDO::FETCH_ASSOC)];
+    $_SESSION['comprar_ahora'] = $productos;
+} else {
+    $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+}
 
 $lista_carrito = array();
 
-if($productos != null){
-    foreach ($productos as $clave => $cantidad){
-        $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo = 1");
-        $sql->execute([$clave]);
-        $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
+if ($productos != null) {
+    foreach ($productos as $clave => $cantidad) {
+        if (is_array($cantidad)) {
+            $lista_carrito[] = $cantidad; // Si ya viene como un arreglo (por el carrito)
+        } else {
+            $sql = $con->prepare("SELECT id, nombre, precio, descuento, $cantidad AS cantidad FROM productos WHERE id=? AND activo = 1");
+            $sql->execute([$clave]);
+            $lista_carrito[] = $sql->fetch(PDO::FETCH_ASSOC);
+        }
     }
 } else {
     header("Location: index.php");

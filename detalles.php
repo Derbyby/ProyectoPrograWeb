@@ -70,18 +70,20 @@ if ($id == '' || $token == '') {
             <div class="col-md-6 order-md-1">
                 <img src="<?php echo $ruta ?>" class="img-product" alt="https://via.placeholder.com/300">
             </div>
-            <div class="col-md-6 order-md-2"> <!-- Corrigido de order-md-3 a order-md-2 -->
+            <div class="col-md-6 order-md-2">
+                <!-- Corrigido de order-md-3 a order-md-2 -->
                 <h2><?php echo htmlspecialchars($nombre); ?></h2>
                 <!-- Uso de htmlspecialchars para mayor seguridad -->
                 <h3><?php echo MONEDA . number_format($precio, 2, '.', ','); ?></h3>
                 <p class="lead"><?php echo htmlspecialchars($descripcion); ?></p>
 
                 <div class="d-grid gap-3 col-10 mx-auto">
-                    <a href="php/paypal.php" class="btn btn-primary">Comprar ahora</a>
-                    <button class="btn btn-outline-primary" type="button" 
+                    <a href="pago.php?id=<?php echo htmlspecialchars($id); ?>" class="btn btn-primary">Comprar ahora</a>
+
+                    <button class="btn btn-outline-primary" type="button"
                         onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>', 
                         '<?php echo htmlspecialchars($row['nombre']); ?>', '<?php echo htmlspecialchars($imagen); ?>', <?php echo $row['precio']; ?>,)">
-                            Agregar al carrito</button>
+                        Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -89,22 +91,22 @@ if ($id == '' || $token == '') {
 </main>
 
 <script>
-    function addProducto(id, token) {
-        let url = 'php/carrito.php';
-        let formData = new FormData();
-        formData.append('id', $id)
-        formData.append('token', token)
+function addProducto(id, token) {
+    let url = 'php/carrito.php';
+    let formData = new FormData();
+    formData.append('id', $id)
+    formData.append('token', token)
 
-        fetch(url, {
+    fetch(url, {
             method: 'POST',
             body: formData,
             mode: 'cors'
         }).then(response => response.json())
-            .then(data => {
-                if (data.ok) {
-                    let elemento = document.getElementById("num_cart")
-                    elemento.innerHTML = data.numero;
-                }
-            })
-    }
+        .then(data => {
+            if (data.ok) {
+                let elemento = document.getElementById("num_cart")
+                elemento.innerHTML = data.numero;
+            }
+        })
+}
 </script>

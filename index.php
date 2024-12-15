@@ -52,7 +52,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     <p class="precio"><strong><?php echo MONEDA . $row['precio']; ?></strong></p>
 
                     <div class="d-grid gap-3 col-10 mx-auto">
-                        <a href="php/paypal.php" class="btn btn-primary">Comprar ahora</a>
+                        <a href="pago.php?id=<?php echo htmlspecialchars($id); ?>" class="btn btn-primary">Comprar ahora</a>
                         <button class="btn btn-outline-primary" type="button"
                             onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>', 
                         '<?php echo htmlspecialchars($row['nombre']); ?>', '<?php echo htmlspecialchars($imagen); ?>', <?php echo $row['precio']; ?>,)">
