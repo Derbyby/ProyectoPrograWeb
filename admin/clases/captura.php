@@ -6,6 +6,7 @@ $con = $db->conectar();
 
 $json = file_get_contents('php://input');
 $datos = json_decode($json, true);
+print ($datos);
 
 if(is_array($datos)){
 
@@ -32,26 +33,52 @@ if(is_array($datos)){
         session_start();  // Inicia la sesión
         $_SESSION['id_transaccion'] = $id_transaccion;  // Almacena el id en la sesión
 
-        $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+        if (isset($_SESSION['comprar_ahora']) && !empty($_SESSION['comprar_ahora'])) {
+            $productos_comprar_ahora = $_SESSION['comprar_ahora'];
 
-        if($productos != null){
-            foreach ($productos as $clave => $cantidad){
+            foreach ($productos_comprar_ahora as $producto) {
+                $clave = $producto['id'];
+                $cantidad = $producto['cantidad'];
+
+                // Consultar los datos del producto desde la base de datos
                 $sql = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo = 1");
                 $sql->execute([$clave]);
                 $row_prod = $sql->fetch(PDO::FETCH_ASSOC);
 
+                // Calcular el precio con descuento
                 $precio = $row_prod['precio'];
-                
                 $descuento = $row_prod['descuento'];
                 $precio_desc = $precio - (($precio * $descuento) / 100);
 
-                $sql_insert =  $con->prepare("INSERT INTO  detalle_compra (id_compra, id_producto, nombre, precio, cantidad) 
+                // Insertar el producto de 'comprar_ahora' en detalle_compra
+                $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad) 
                 VALUES (?,?,?,?,?)");
                 $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
+            }
+        } else {
+            $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 
+            if($productos != null){
+                foreach ($productos as $clave => $cantidad){
+                    $sql = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo = 1");
+                    $sql->execute([$clave]);
+                    $row_prod = $sql->fetch(PDO::FETCH_ASSOC);
+    
+                    $precio = $row_prod['precio'];
+                    
+                    $descuento = $row_prod['descuento'];
+                    $precio_desc = $precio - (($precio * $descuento) / 100);
+    
+                    $sql_insert =  $con->prepare("INSERT INTO  detalle_compra (id_compra, id_producto, nombre, precio, cantidad) 
+                    VALUES (?,?,?,?,?)");
+                    $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
+    
+                }
             }
         }
+
         unset($_SESSION['carrito']);
+        unset($_SESSION['comprar_ahora']);
         // Redirige a la página de recibo con la transacción
         header("Location: /recibo.php");
         exit; 
