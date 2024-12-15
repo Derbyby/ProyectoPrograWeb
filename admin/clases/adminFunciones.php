@@ -32,6 +32,7 @@ function login($usuario, $contraseña, $con): array
             $_SESSION['id'] = $admin['id'];
             $_SESSION['nombre'] = $admin['nombre'];
             $_SESSION['sexo'] = $admin['sexo'];
+            $_SESSION['user_type'] = 'admin';
 
             header("Location: ../index-admin.php");
             exit;

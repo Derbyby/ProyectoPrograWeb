@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'config.php';
+require_once 'config.php';
 
 // Verifica si los datos se están recibiendo
 if (isset($_POST['id']) && isset($_POST['token'])) {

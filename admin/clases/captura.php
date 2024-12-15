@@ -1,5 +1,4 @@
 <?php
-include '../../header.html';
 require '../../php/database.php';
 require '../../php/config.php';
 $db = new Database();

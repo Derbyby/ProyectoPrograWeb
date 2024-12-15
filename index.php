@@ -1,7 +1,7 @@
 <?php
-include 'html/header.html';
+include 'html/header.php';
 require 'php/database.php';
-require 'php/config.php';
+require_once 'php/config.php';
 $db = new Database();
 $con = $db->conectar();
 
@@ -26,7 +26,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4"> <!-- Ajustado a 5 columnas -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"> <!-- Ajustado a 5 columnas -->
         <?php foreach ($resultado as $row) { ?>
             <div class="col"> <!-- Asegúrate de que cada producto esté dentro de un div con la clase 'col' -->
                 <div class="product">
@@ -45,7 +45,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     $token_tmp = hash_hmac('sha1', $id, KEY_TOKEN);
                     ?>
                     <a
-                        href="php/detalles.php?id=<?php echo htmlspecialchars($row['id']); ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>">
+                        href="detalles.php?id=<?php echo htmlspecialchars($row['id']); ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>">
                         <img src="<?php echo htmlspecialchars($imagen); ?>" alt="Imagen de producto">
                         <p class="nombre"><?php echo $row['nombre']; ?></p>
                     </a>
