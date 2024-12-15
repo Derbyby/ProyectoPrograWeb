@@ -66,47 +66,55 @@ if(!empty($_POST)){
 
     <?php mostrarMensajaes($errors);?>
 
-        <form class="row g-3" action="registro.php" method="post" autocomplete="off">
-            <div calss="col-md-6">
+        <form id="miFormulario" class="row g-3" action="registro.php" method="post" autocomplete="off">
+            <div class="col-md-6">
                 <label for="nombres"><span class="text-danger">*</span> Nombres</label>
-                <input type="text" name="nombres" id="nombres" class="form-control" requireda>
+                <input type="text" name="nombres" id="nombres" class="form-control" required>
+                <span id="error-nombres" class="text-danger"></span>
             </div>
 
-            <div calss="col-md-6">
+            <div class="col-md-6">
                 <label for="apellidos"><span class="text-danger">*</span> Apellidos</label>
-                <input type="text" name="apellidos" id="apellidos" class="form-control" requireda>
+                <input type="text" name="apellidos" id="apellidos" class="form-control" required>
+                <span id="error-apellidos" class="text-danger"></span>
             </div>
 
-            <div calss="col-md-6">
+            <div class="col-md-6">
                 <label for="email"><span class="text-danger">*</span> Correo electronico</label>
-                <input type="email" name="email" id="email" class="form-control" requireda>
+                <input type="email" name="email" id="email" class="form-control" required>
+                <span id="error-email" class="text-danger"></span>
                 <span id="validaEmail" class="text-danger"></span>
             </div>
 
-            <div calss="col-md-6">
+            <div class="col-md-6">
                 <label for="telefono"><span class="text-danger">*</span> Telefono</label>
-                <input type="tel" name="telefono" id="telefono" class="form-control" requireda>
+                <input type="tel" name="telefono" id="telefono" class="form-control" required>
+                <span id="error-telefono" class="text-danger"></span>
             </div>
 
-            <div calss="col-md-6">
+            <div class="col-md-6">
                 <label for="ine"><span class="text-danger">*</span> INE</label>
-                <input type="text" name="ine" id="ine" class="form-control" requireda>
+                <input type="text" name="ine" id="ine" class="form-control" required>
+                <span id="error-ine" class="text-danger"></span>
             </div>
 
-            <div calss="col-md-6">
+            <div class="col-md-6">
                 <label for="usuario"><span class="text-danger">*</span> Usuario</label>
-                <input type="text" name="usuario" id="usuario" class="form-control" requireda>
+                <input type="text" name="usuario" id="usuario" class="form-control" required>
+                <span id="error-usuario" class="text-danger"></span>
                 <span id="validaUsuario" class="text-danger"></span>
             </div>
 
-            <div calss="col-md-6">
+            <div class="col-md-6">
                 <label for="password"><span class="text-danger">*</span> Contraseña</label>
-                <input type="password" name="password" id="password" class="form-control" requireda>
+                <input type="password" name="password" id="password" class="form-control" required>
+                <span id="error-password" class="text-danger"></span>
             </div>
 
-            <div calss="col-md-6">
+            <div class="col-md-6">
                 <label for="repassword"><span class="text-danger">*</span>Confirmar contraseña</label>
-                <input type="password" name="repassword" id="repassword" class="form-control" requireda>
+                <input type="password" name="repassword" id="repassword" class="form-control" required>
+                <span id="error-repassword" class="text-danger"></span>
             </div>
 
             <i><b>Nota:</b> Los campos con asterisco son obligatorios</i>
@@ -119,6 +127,8 @@ if(!empty($_POST)){
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+<script src="validaciones.js"></script>
 
 <script>
     let txtUsuario = document.getElementById('usuario')
