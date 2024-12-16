@@ -5,7 +5,7 @@ require_once 'php/config.php';
 $db = new Database();
 $con = $db->conectar();
 
-$sql = $con->prepare("SELECT id, nombre, descripcion, imagen, precio FROM productos WHERE activo = 1");
+$sql = $con->prepare("SELECT id, nombre, descripcion, precio, cantidad FROM productos WHERE activo = 1");
 $sql->execute();
 $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 
