@@ -67,16 +67,19 @@ if (!empty($_POST)) {
 
                                         <div class="form-floating mb-3">
                                             <input class="form-control" id="usuario" name="usuario" type="text"
-                                            placeholder="Usuario" autofocus />
+                                                placeholder="Usuario" autofocus />
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" id="contraseña" name="contraseña" type="password"
-                                                placeholder="Contraseña" />
+                                            <input class="form-control" id="contraseña" name="contraseña"
+                                                type="password" placeholder="Contraseña" />
                                         </div>
 
                                         <?php mostrarMensajes($errors); ?>
-
+                                        
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <div class="text-left">
+                                                <a class="small" href="/index.php">Volver a la página de inicio</a>
+                                            </div>
                                             <a class="small"></a>
                                             <button type="submit" class="btn btn-primary">Iniciar</button>
                                         </div>

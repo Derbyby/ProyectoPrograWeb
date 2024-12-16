@@ -20,11 +20,9 @@ if (file_exists('php/config.php')) {
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-..." crossorigin="anonymous" />
     <link rel="preload" href="/css/style.css" as="style" />
     <link rel="preload" href="/css/cart-style.css" as="style" />
-    <!-- <link href="/css/style.css" rel="stylesheet"> -->
+    <link href="../admin/css/sb-admin-2.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet" />
 </head>
 
@@ -72,16 +70,32 @@ if (file_exists('php/config.php')) {
         <!-- Si no inicio sesion muestra para iniciar -->
         <?php if (isset($_SESSION['user_id'])) { ?>
             <!-- Menu desplegable -->
-            <div class="dropdown">
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombreAdmin">
+                        <?php echo $_SESSION['user_name']; ?>
+                    </span>
+                    <i class="bx bx-user" id="user-icon"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="../login/logout.php">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Cerrar Sesión
+                    </a>
+                </div>
+            </li>
+            <!-- <div class="dropdown">
                 <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     id="btn_session" aria-expanded="false">
-                    <i class="bx bx-user" id="user-icon"><a></i>
-                    <?php echo $_SESSION['user_name']; ?></a>
+                    <i class="bx bx-user" id="user-icon"></i>
+                    <a class="usu"></a>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="btn_session">
                     <li><a class="dropdown-item" href="../login/logout.php">Cerrar sesion</a></li>
                 </ul>
-            </div>
+            </div> -->
 
         <?php } else { ?>
             <a href="../login/loginUser.php" title="Iniciar sesion" class="bx bx bxs-user" id="user-icon"><a>
@@ -99,6 +113,10 @@ if (file_exists('php/config.php')) {
         crossorigin="anonymous"></script>
     <script src="/js/app.js"></script>
     <script src="/js/slider.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </body>
 
