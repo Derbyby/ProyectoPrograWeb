@@ -1,4 +1,5 @@
-<?php 
+<?php
+ob_start();
 require_once 'php/config.php';
 ?>
 
@@ -42,7 +43,15 @@ require_once 'php/config.php';
 
                     <!-- Total del carro -->
                     <div class="total">
+                        <!-- Si no ha iniciado siesion lo manda a iniciarla -->
+                        <?php if(isset($_SESSION['user_cliente'])){ ?>
                         <a href="pago.php" class="btn-buy">Comprar ahora</a>
+
+                        <?php } else { ?>
+
+                        <a href="comprarSinUser.php?pago" class="btn-buy">Comprar ahora</a>
+                        <?php } ?>
+
                         <!-- <button type="button" class="btn-buy">Comprar Ahora</button> -->
                         <div class="total-title">Total</div>
                         <div class="total-price">$0</div>
@@ -54,7 +63,18 @@ require_once 'php/config.php';
 
                 <!-- Si no inicio sesion muestra para iniciar -->
                 <?php if(isset($_SESSION['user_id'])){ ?>
-                    <a href="#" class="btn btn-success"><i class="bx bx-user" id="user-icon"></i> <?php echo $_SESSION['user_name'];?></a>
+                <!-- Menu desplegable -->
+                <div class="dropdown">
+                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        id="btn_session" aria-expanded="false">
+                        <i class="bx bx-user" id="user-icon"><a></i>
+                        <?php echo $_SESSION['user_name'];?></a>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn_session">
+                        <li><a class="dropdown-item" href="logout.php">Cerrar sesion</a></li>
+                    </ul>
+                </div>
+                            
                 <?php } else {?>
                     <a href="loginUser.php" title="Iniciar sesion" class="bx bx bxs-user" id="user-icon"><a>
                     <a href="../admin/sesion/inicio.php" title="Iniciar sesion Administrador" class="bx bx bxs-user-badge" id="admin-icon"><a>
@@ -66,6 +86,8 @@ require_once 'php/config.php';
         <a href="#">Contacto</a>
     </nav>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..."
+        crossorigin="anonymous"></script>
     <script src="/app.js"></script>
     <script src="/slider.js"></script>
 
