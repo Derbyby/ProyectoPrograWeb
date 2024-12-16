@@ -12,6 +12,7 @@ if (!empty($_POST)) {
     $nombres = trim($_POST['nombres']);
     $apellidos = trim($_POST['apellidos']);
     $email = trim($_POST['email']);
+    $ine = trim($_POST['ine']);
     $telefono = trim($_POST['telefono']);
     $usuario = trim($_POST['usuario']);
     $password = trim($_POST['password']);
@@ -93,6 +94,12 @@ if (!empty($_POST)) {
             </div>
 
             <div class="form-floating">
+                <label for="ine"><span class="text-danger">*</span> INE</label>
+                <input type="text" name="ine" id="ine" class="form-control" required>
+                <span id="error-ine" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating">
                 <label for="usuario"><span class="text-danger">*</span> Usuario</label>
                 <input type="text" name="usuario" id="usuario" class="form-control" required>
                 <span id="error-usuario" class="text-danger"></span>
@@ -111,12 +118,6 @@ if (!empty($_POST)) {
                 <span id="error-repassword" class="text-danger"></span>
             </div>
 
-            <div class="form-floating">
-                <label for="apellidos"><span class="text-danger">*</span> Apellidos</label>
-                <input type="text" name="apellidos" id="apellidos" class="form-control" required>
-                <span id="error-apellidos" class="text-danger"></span>
-            </div>
-
             <div class="col-12">
                 <i><b>Nota:</b> Los campos con asterisco son obligatorios</i>
             </div>
@@ -126,14 +127,12 @@ if (!empty($_POST)) {
             </div>
 
         </form>
-
     </div>
 
     <footer>
         <p>&copy; 2024 WoofLandia. Todos los derechos reservados.</p>
     </footer>
 </main>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
