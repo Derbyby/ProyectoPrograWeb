@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-11-2024 a las 08:16:50
+-- Tiempo de generación: 16-12-2024 a las 06:21:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -32,6 +32,7 @@ CREATE TABLE `admin` (
   `usuario` varchar(30) NOT NULL,
   `contraseña` varchar(120) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `sexo` bit(2) DEFAULT b'1',
   `email` varchar(50) NOT NULL,
   `token_contraseña` varchar(40) DEFAULT NULL,
   `contraseña_solicitada` tinyint(4) NOT NULL DEFAULT 0,
@@ -43,10 +44,11 @@ CREATE TABLE `admin` (
 -- Volcado de datos para la tabla `admin`
 --
 
-INSERT INTO `admin` (`id`, `usuario`, `contraseña`, `nombre`, `email`, `token_contraseña`, `contraseña_solicitada`, `activo`, `fecha_alta`) VALUES
-(3, 'admin', '$2y$10$taG11ee46X0Eib31sUOxsueQZzb1lMatiKArEcJl2FDpdUm1CLXGy', 'Administrador', 'contacto@codigosdeprogramacion.com', NULL, 0, 1, '2024-11-17 23:54:25'),
-(4, 'admin2', '204240', 'Jesus', 'alu.22130835@correo.com', NULL, 0, 1, '2024-11-18 07:21:16'),
-(0, 'admin3', '300505', 'Yessenia', 'alu.22130839@gmail.com', NULL, 0, 1, '2024-11-18 19:40:35');
+INSERT INTO `admin` (`id`, `usuario`, `contraseña`, `nombre`, `sexo`, `email`, `token_contraseña`, `contraseña_solicitada`, `activo`, `fecha_alta`) VALUES
+(1, 'admin4', '22222', '', b'01', 'oko@gmail.com', NULL, 0, 1, '2024-12-02 02:29:04'),
+(3, 'admin', '$2y$10$taG11ee46X0Eib31sUOxsueQZzb1lMatiKArEcJl2FDpdUm1CLXGy', 'Administrador', b'00', 'contacto@codigosdeprogramacion.com', NULL, 0, 1, '2024-11-17 23:54:25'),
+(4, 'admin2', '204240', 'Jesus', b'00', 'alu.22130835@correo.com', NULL, 0, 1, '2024-11-18 07:21:16'),
+(5, 'admin3', '300505', 'Yessenia', b'01', 'alu.22130839@gmail.com', NULL, 0, 1, '2024-11-30 20:07:12');
 
 -- --------------------------------------------------------
 
@@ -66,6 +68,13 @@ CREATE TABLE `clientes` (
   `fecha_modifica` datetime DEFAULT NULL,
   `fecha_baja` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nombres`, `apellidos`, `email`, `telefono`, `identificador`, `estado`, `fecha_alta`, `fecha_modifica`, `fecha_baja`) VALUES
+(1, 'Yessenia', 'Morones', 'alu05@correo.com', '8714848154', '101510012', 1, '2024-12-15 22:40:17', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -108,6 +117,7 @@ CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `descripcion` text NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
   `precio` decimal(10,2) NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -119,18 +129,28 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `id_categoria`, `cantidad`, `activo`, `descuento`) VALUES
-(2, 'Comida Premium para Perro', 'Alimento balanceado para perros adultos. Sabor a carne y vegetales.', 10.00, 1, 7, 1, 0),
-(3, 'Galletas Saludables', 'Galletas horneadas con ingredientes naturales. Ideal para premios.', 245.50, 1, 12, 1, 0),
-(4, 'Croquetas de Pollo y Arroz', 'Perfectas para cachorros en crecimiento.', 136.75, 1, 9, 1, 0),
-(6, 'Pony', 'Juguete de Pony flexible y duradero.', 13.00, 0, 0, 1, 0),
-(7, 'Colorin Coloron', 'Tinte apto para animales con todos los colores que quieras y necesites. Que tu cachorro se vea divino.', 10.75, 0, 0, 1, 0),
-(8, 'Pitbull Dolly', 'Dolly la muñeca amable, que es un pitbull.', 60.30, 0, 0, 1, 0),
-(9, 'Pitbull Dolly', 'Dolly la muñeca amable, que es un pitbull.', 60.30, 0, 0, 1, 0),
-(10, 'JAJAJAJJA', 'La panzita que da risa con este increible producto que hará a tu can el más feliz de todos.', 20.99, 0, 0, 1, 0),
-(11, 'Sopas de atún', 'Ricos para tus canes de paladar gatuno.', 20.99, 0, 0, 1, 0),
-(12, 'vsg vs', 'qw', 10.00, 0, 0, 0, 0),
-(13, 'Noga Bola', 'La favorita de tus mascotas', 25.00, 0, 0, 0, 0);
+INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `imagen`, `precio`, `id_categoria`, `cantidad`, `activo`, `descuento`) VALUES
+(2, 'Comida Premium', 'Alimento balanceado para perros adultos y razas pequeñas. Sabor a carne y vegetales.', '../imagen/2.webp', 20.00, 1, 7, 1, 127),
+(3, 'Galletas Saludables', 'Galletas horneadas con ingredientes naturales. Ideal para premios.', '../imagen/3.jpg', 13.00, 1, 12, 1, 0),
+(4, 'Croquetas de Pollo y Arroz', 'Perfectas para cachorros en crecimiento.', '../imagen/4.jpeg', 16.75, 1, 9, 1, 0),
+(6, 'Pony', 'Juguete de Pony flexible y duradero.', NULL, 13.00, 0, 0, 1, 0),
+(7, 'Colorin Coloron', 'Tinte apto para animales con todos los colores que quieras y necesites. Que tu cachorro se vea divino.', NULL, 10.75, 0, 0, 1, 0),
+(9, 'Pitbull Dolly', 'Dolly la muñeca amable, que es un pitbull.', NULL, 60.30, 0, 0, 1, 0),
+(10, 'JAJAJAJA FOOD', 'La panzita que da risa con este increible producto que hará a tu can el más feliz de todos.', NULL, 20.99, 0, 0, 1, 0),
+(11, 'Sopas de atún', 'Ricos para tus canes de paladar gatuno.', NULL, 20.99, 0, 0, 1, 0),
+(12, 'Jarra de dulce organico', 'qw', NULL, 10.00, 0, 0, 0, 0),
+(13, 'Noga Bola', 'La favorita de tus mascotas', NULL, 25.00, 0, 0, 0, 0),
+(15, 'Labrador Plus - Croqueta', 'Croqueta perfecta para tu can', NULL, 30.60, 0, 0, 1, 0),
+(18, 'Venti Lador', 'Ventila y da Amor', NULL, 60.00, 0, 0, 1, 0),
+(19, 'Dolphin Molvin', 'El juguete más espectacular del mercado', NULL, 8.99, 0, 0, 0, 0),
+(20, 'Mimo el juguete que mima', 'momi', NULL, 829.00, 0, 0, 1, 0),
+(21, 'Chuuu', 'CHUUUUU', '../imagen/21.jpeg', 5000.00, 0, 0, 1, 0),
+(22, 'Dulce de marfil', 'sopas', '../imagen/22.jpeg', 6.22, 0, 0, 1, 0),
+(23, 'Altos', 'sopas', NULL, 9.30, 0, 0, 1, 0),
+(24, 'Bajo', 'sopas', NULL, 60.22, 0, 0, 1, 0),
+(25, 'Julion Alvarez', 'hyyyynjin', '../imagen/25.jpeg', 300.00, 0, 0, 1, 0),
+(26, 'Collar para perros', 'Collar ajustable perfecto', '../imagen/26.jpeg', 30.00, 0, 0, 0, 0),
+(27, 'Cuella nueva', 'Cuellos de pollo para la pancita de tu can', '../imagen/27.jpeg', 30.00, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -150,8 +170,21 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `usuario`, `contraseña`, `activacion`, `token`, `token_constraseña`, `contraseña_solicita`, `id_cliente`) VALUES
+(1, 'yessenia', '300505', 1, '442e293bc28146be1bd7864578a8cc26', NULL, 0, 1);
+
+--
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `clientes`
@@ -192,7 +225,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `compra`
@@ -210,13 +243,13 @@ ALTER TABLE `detalle_compra`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    scroll-padding: 2rem;
+}
+
+:root {
+    --verde-clarito: #DCF0EE;
+    --verde-verde: #C6E0C7;
+    --azul: #C7EBFB;
+    --verde: #D3E5A7;
+    --azul-verde: #ACDEE7;
+    --verde-tierra: #D5E7CF;
+    --verde-oscuro: #04A583;
+    --azul-oscuro: #86DDF9;
+    --morado: #A8B8CF;
+    --amarillo: #F3DA8A;
+    --turquesa: #16B5C8;
+    --blanco: #FFFF;
+    --negro: #000000;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--blanco);
+}
+
+header {
+    position: fixed; 
+    padding: 15px 30px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: var(--azul-verde);
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; 
+}
+
+a {
+    text-decoration: none;
+}
+
+.a input[type="text"] {
+    background-color: #444;
+    /* Verde oscuro */
+    color: #A8E6CF;
+    /* Verde claro */
+}
+
+.logo {
+    padding: 0.1rem;
+    padding-bottom: 0rem;
+    height: auto;
+    width: 10%;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        flex: 1;
+        margin-inline: auto;
+        color: var(--turquesa);
+        height: auto;
+        width: 20%;
+        padding-left: 0rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .logo {
+        flex: 1;
+        margin-inline: auto;
+        color: var(--turquesa);
+        height: auto;
+        width: 20%;
+        padding-left: 0rem;
+    }
+}
+
+main{
+    align-content: center;
+}
+
+/* Contenedor del formulario */
+.form-login {
+    background: var(--amarillo); /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Título del formulario */
+.form-login h2 {
+    text-align: center;
+    color: var(--verde-oscuro); 
+    font-weight: bolder;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+/* Campos del formulario */
+.form-floating {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.form-floating input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-floating label {
+    position: absolute;
+    /* top: 10px; */
+    left: 15px;
+    font-size: 14px;
+    color: #666;
+    transition: 0.2s;
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label {
+    top: 0px;
+    left: 10px;
+    font-size: 12px;
+    color: var(--azul-oscuro); 
+}
+
+/* Botón */
+button.btn {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--verde-oscuro); 
+    color: var(--blanco);
+    border: none;
+    transition: 0.3s;
+}
+
+button.btn:hover {
+    background-color: var(--amarillo);
+    border: 1px solid var(--verde-oscuro);
+    color: #004D40;
+    cursor: pointer;
+}
+
+/* Enlace de registro */
+.col-12 a {
+    color: #018f77;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.col-12 a:hover {
+    text-decoration: underline;
+    color: #19b87e;
+}
+
+/* Espaciado general */
+.m-5 {
+    margin: 40px;
+}
+
+.pt-3 {
+    padding-top: 20px;
+}
+
+/* Registro */
+.registro{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px; /* Evita que se solape con el header */
+    padding: 20px;
+}
+
+/* Contenedor del formulario */
+.container {
+    background-color: var(--amarillo);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Título */
+.container h2 {
+    text-align: center;
+    color: var(--verde-oscuro);
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Campos del formulario */
+label {
+    font-weight: bold;
+    color: var(--negro);
+}
+
+input {
+    border: 1px solid var(--verde-tierra);
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--turquesa);
+    box-shadow: 0 0 5px var(--turquesa);
+}
+
+span.text-danger {
+    font-size: 12px;
+}
+
+/* Botón */
+button.btn {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: var(--verde-oscuro);
+    color: var(--blanco);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button.btn:hover {
+    background-color: var(--amarillo);
+    color: var(--verde-oscuro);
+    border: 1px solid var(--verde-oscuro);
+}
+
+footer {
+    background-color: var(--verde);
+    color: var(--verde-oscuro);
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+}

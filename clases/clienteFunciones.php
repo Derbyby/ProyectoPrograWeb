@@ -87,7 +87,7 @@ function login($usuario, $contraseña, $con){
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['user_name'] = $row['usuario'];
                 $_SESSION['user_cliente'] = $row['id_cliente'];
-                header("Location: index.php");
+                header("Location: ../index.php");
                 exit;
             } 
         } else {

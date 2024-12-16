@@ -1,8 +1,8 @@
 <?php
-include 'html/header.php';
-require 'php/database.php';
-require_once 'php/config.php';
-require 'admin/clases/clienteFunciones.php';
+include '../html/header-inicio.php';
+require '../php/database.php';
+require_once '../php/config.php';
+require '../clases/clienteFunciones.php';
 $db = new Database();
 $con = $db->conectar();
 
@@ -24,10 +24,10 @@ if(!empty($_POST)){
 ?>
 
 <head>
-    <title>WoofLandia</title>
+    <title>Login</title>
 </head>
 
-<main class="form-login m-auto pt-4">
+<main class="form-login m-5 pt-3">
     <h2>Iniciar sesion</h2>
 
     <?php mostrarMensajaes($errors);?>
@@ -57,3 +57,4 @@ if(!empty($_POST)){
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+

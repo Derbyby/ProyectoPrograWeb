@@ -17,16 +17,15 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 <div class="container-slider">
     <div class="slider-frame">
         <ul>
-            <li><img src="slider/corgi chiquito.jpg" alt="Corgi"></li>
-            <li><img src="slider/french.jpg" alt="French"></li>
-            <li><img src="slider/pastor no de iglesia.jpg" alt="Pastor"></li>
-            <li><img src="slider/gran.jpg" alt="Gran"></li>
+            <li><img src="slider/s01.png" alt="Promocional 1"></li>
+            <li><img src="slider/s02.png" alt="Promocional 2"></li>
+            <li><img src="slider/s03.png" alt="Promocional 3"></li>
         </ul>
     </div>
 </div>
 
 <div class="container">
-    <div class="row row-cols-auto g-2"> <!-- Ajustado a 5 columnas -->
+    <div class="row row-cols-auto row-cols-lg-4 g-2"> <!-- Ajustado a 5 columnas -->
         <?php foreach ($resultado as $row) { ?>
             <div class="col"> <!-- Asegúrate de que cada producto esté dentro de un div con la clase 'col' -->
                 <div class="product">
@@ -45,14 +44,14 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
                     $token_tmp = hash_hmac('sha1', $id, KEY_TOKEN);
                     ?>
                     <a
-                        href="detalles.php?id=<?php echo htmlspecialchars($row['id']); ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>">
+                        href="php/detalles.php?id=<?php echo htmlspecialchars($row['id']); ?>&token=<?php echo hash_hmac('sha1', $row['id'], KEY_TOKEN); ?>">
                         <img src="<?php echo htmlspecialchars($imagen); ?>" alt="Imagen de producto">
                         <p class="nombre"><?php echo $row['nombre']; ?></p>
                     </a>
                     <p class="precio"><strong><?php echo MONEDA . $row['precio']; ?></strong></p>
 
                     <div class="d-grid gap-3 col-10 mx-auto">
-                        <a href="pago.php?id=<?php echo htmlspecialchars($id); ?>" class="btn btn-primary">Comprar ahora</a>
+                        <a href="pago/pago.php?id=<?php echo htmlspecialchars($id); ?>" class="btn btn-primary">Comprar ahora</a>
                         <button class="btn btn-outline-primary" type="button"
                             onclick="addProducto(<?php echo $id; ?>, '<?php echo $token_tmp; ?>', 
                         '<?php echo htmlspecialchars($row['nombre']); ?>', '<?php echo htmlspecialchars($imagen); ?>', <?php echo $row['precio']; ?>,)">
@@ -63,6 +62,10 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         <?php } ?>
     </div>
 </div>
+
+<?php
+include 'html/footer.html';
+?>
 
 <script>
     fetch(url, {

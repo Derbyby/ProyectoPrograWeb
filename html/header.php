@@ -1,6 +1,12 @@
 <?php
 ob_start();
-require_once 'php/config.php';
+if (file_exists('php/config.php')) {
+    require_once 'php/config.php';
+} elseif (file_exists('../php/config.php')) {
+    require_once '../php/config.php';
+} else {
+    die('Error: No se encontró el archivo config.php');
+}
 ?>
 
 <!doctype html>
@@ -16,9 +22,9 @@ require_once 'php/config.php';
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-..." crossorigin="anonymous" />
-        <link rel="preload" href="/css/style.css" as="style" />
-        <link rel="preload" href="/css/cart-style.css" as="style" />
-        <!-- <link href="/css/style.css" rel="stylesheet"> -->
+    <link rel="preload" href="/css/style.css" as="style" />
+    <link rel="preload" href="/css/cart-style.css" as="style" />
+    <!-- <link href="/css/style.css" rel="stylesheet"> -->
     <link href="../css/style.css" rel="stylesheet" />
 </head>
 
@@ -33,54 +39,55 @@ require_once 'php/config.php';
             <button id="searchButton" class="btn btn-primary">Buscar</button>
         </div>
 
-                <!-- Cart icon -->
-                <i class="bx bx-shopping-bag me-1" title="Carrito" id="cart-icon"></i>
+        <!-- Cart icon -->
+        <i class="bx bx-shopping-bag me-1" title="Carrito" id="cart-icon"></i>
 
-                <!-- Cart -->
-                <div class="cart">
-                    <h2 class="cart-title">Carrito</h2>
+        <!-- Cart -->
+        <div class="cart">
+            <h2 class="cart-title">Carrito</h2>
 
-                    <!-- Contenido del carrito (cart) -->
-                    <div class="cart-content"></div>
+            <!-- Contenido del carrito (cart) -->
+            <div class="cart-content"></div>
 
-                    <!-- Total del carro -->
-                    <div class="total">
-                        <!-- Si no ha iniciado siesion lo manda a iniciarla -->
-                        <?php if(isset($_SESSION['user_cliente'])){ ?>
-                        <a href="pago.php" class="btn-buy">Comprar ahora</a>
+            <!-- Total del carro -->
+            <div class="total">
+                <!-- Si no ha iniciado siesion lo manda a iniciarla -->
+                <?php if (isset($_SESSION['user_cliente'])) { ?>
+                    <a href="../pago/pago.php" class="btn-buy">Comprar ahora</a>
 
-                        <?php } else { ?>
+                <?php } else { ?>
 
-                        <a href="comprarSinUser.php?pago" class="btn-buy">Comprar ahora</a>
-                        <?php } ?>
-
-                        <!-- <button type="button" class="btn-buy">Comprar Ahora</button> -->
-                        <div class="total-title">Total</div>
-                        <div class="total-price">$0</div>
-                    </div>
-
-                    <!-- Cierre del carrito -->
-                    <i class="bx bx-x" id="cart-close"></i>
-                </div>
-
-                <!-- Si no inicio sesion muestra para iniciar -->
-                <?php if(isset($_SESSION['user_id'])){ ?>
-                <!-- Menu desplegable -->
-                <div class="dropdown">
-                    <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                        id="btn_session" aria-expanded="false">
-                        <i class="bx bx-user" id="user-icon"><a></i>
-                        <?php echo $_SESSION['user_name'];?></a>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="btn_session">
-                        <li><a class="dropdown-item" href="logout.php">Cerrar sesion</a></li>
-                    </ul>
-                </div>
-                            
-                <?php } else {?>
-                    <a href="loginUser.php" title="Iniciar sesion" class="bx bx bxs-user" id="user-icon"><a>
-                    <a href="../admin/sesion/inicio.php" title="Iniciar sesion Administrador" class="bx bx bxs-user-badge" id="admin-icon"><a>
+                    <a href="comprarSinUser.php?pago" class="btn-buy">Comprar ahora</a>
                 <?php } ?>
+
+                <!-- <button type="button" class="btn-buy">Comprar Ahora</button> -->
+                <div class="total-title">Total</div>
+                <div class="total-price">$0</div>
+            </div>
+
+            <!-- Cierre del carrito -->
+            <i class="bx bx-x" id="cart-close"></i>
+        </div>
+
+        <!-- Si no inicio sesion muestra para iniciar -->
+        <?php if (isset($_SESSION['user_id'])) { ?>
+            <!-- Menu desplegable -->
+            <div class="dropdown">
+                <button class="btn btn-success btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    id="btn_session" aria-expanded="false">
+                    <i class="bx bx-user" id="user-icon"><a></i>
+                    <?php echo $_SESSION['user_name']; ?></a>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="btn_session">
+                    <li><a class="dropdown-item" href="../login/logout.php">Cerrar sesion</a></li>
+                </ul>
+            </div>
+
+        <?php } else { ?>
+            <a href="../login/loginUser.php" title="Iniciar sesion" class="bx bx bxs-user" id="user-icon"><a>
+                    <a href="../admin/sesion/inicio.php" title="Iniciar sesion Administrador" class="bx bx bxs-user-badge"
+                        id="admin-icon"><a>
+                        <?php } ?>
     </header>
     <nav>
         <a href="#">Razas</a>
@@ -90,12 +97,9 @@ require_once 'php/config.php';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-..."
         crossorigin="anonymous"></script>
-    <script src="/app.js"></script>
-    <script src="/slider.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/slider.js"></script>
 
-    <footer>
-        <p>&copy; 2024 WoofLandia. Todos los derechos reservados.</p>
-    </footer>
 </body>
 
 <!-- Script para búsqueda -->

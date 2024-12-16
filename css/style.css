@@ -26,10 +26,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: var(--blanco);
-    /* Azul verdoso claro */
 }
 
 header {
@@ -255,36 +252,25 @@ nav a {
     height: 300px;
 } */
 
+
 footer {
     background-color: var(--verde);
-    /* Color de fondo */
     color: var(--verde-oscuro);
-    /* Color de texto */
     text-align: center;
     padding: 10px 0;
-    /* Aumenta el padding para mayor comodidad visual */
-    position: fixed;
     width: 100%;
-    bottom: 0;
-    z-index: 1000;
-    /* Asegura que el footer esté por encima de otros elementos */
 }
 
 footer p {
     margin: 0;
-    /* Elimina el margen predeterminado de los párrafos */
     font-size: 14px;
-    /* Ajusta el tamaño de fuente para mejor legibilidad */
     font-weight: 500;
-    /* Añade un peso intermedio al texto */
 }
 
 @media screen and (max-width: 768px) {
     footer {
         padding: 15px 0;
-        /* Aumenta el padding en dispositivos pequeños */
         font-size: 12px;
-        /* Reduce el tamaño de la fuente en pantallas pequeñas */
     }
 }
 
