@@ -67,7 +67,7 @@ require_once 'php/config.php';
     </nav>
 
     <script src="/app.js"></script>
-    <!--<script src="/slider.js"></script>-->
+    <script src="/slider.js"></script>
 
     <footer>
         <p>&copy; 2024 WoofLandia. Todos los derechos reservados.</p>
