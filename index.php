@@ -26,7 +26,7 @@ $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4"> <!-- Ajustado a 5 columnas -->
+    <div class="row row-cols-auto g-2"> <!-- Ajustado a 5 columnas -->
         <?php foreach ($resultado as $row) { ?>
             <div class="col"> <!-- Asegúrate de que cada producto esté dentro de un div con la clase 'col' -->
                 <div class="product">

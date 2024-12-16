@@ -16,8 +16,9 @@ require_once 'php/config.php';
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-..." crossorigin="anonymous" />
-    <link rel="preload" href="/css/style.css" as="style" />
-    <!-- <link href="/css/style.css" rel="stylesheet"> -->
+        <link rel="preload" href="/css/style.css" as="style" />
+        <link rel="preload" href="/css/cart-style.css" as="style" />
+        <!-- <link href="/css/style.css" rel="stylesheet"> -->
     <link href="../css/style.css" rel="stylesheet" />
 </head>
 
@@ -27,8 +28,9 @@ require_once 'php/config.php';
             <img class="logo" src="../imagen/logo.png" alt="WoofLandia">
         </a>
         <div class="search-bar">
-            <input type="text" placeholder="Buscar productos..." />
-            <button>Buscar</button>
+            <input type="text" id="searchBar" placeholder="Buscar productos..." class="form-control" />
+            <div id="suggestions" class="dropdown-menu"></div>
+            <button id="searchButton" class="btn btn-primary">Buscar</button>
         </div>
 
                 <!-- Cart icon -->
@@ -100,8 +102,18 @@ require_once 'php/config.php';
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const searchBar = document.getElementById('searchBar');
-        const productTable = document.getElementById('productTable').getElementsByTagName('tbody')[0];
+        const suggestions = document.getElementById('suggestions');
+        const searchButton = document.getElementById('searchButton');
 
+        // Lista de productos (puedes reemplazar esto con una llamada al servidor)
+        const productos = [
+            { id: 1, nombre: 'Croquetas para perro' },
+            { id: 2, nombre: 'Juguete masticable' },
+            { id: 3, nombre: 'Casa para perros' },
+            { id: 4, nombre: 'Collar antipulgas' },
+        ];
+
+        // Actualiza las sugerencias en base a la entrada
         searchBar.addEventListener('input', () => {
             const filter = searchBar.value.toLowerCase();
             const rows = productTable.getElementsByTagName('tr');
@@ -119,13 +131,13 @@ require_once 'php/config.php';
         });
 
         // Mostrar modal si existe un estado
-        let status = "<?php echo htmlspecialchars($status, ENT_QUOTES, 'UTF-8'); ?>";
-
+        const status = "<?php echo $status; ?>";
         if (status) {
             const modal = new bootstrap.Modal(document.getElementById('statusModal'));
             modal.show();
         }
     });
 </script>
+
 
 </html>
