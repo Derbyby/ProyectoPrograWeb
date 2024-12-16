@@ -81,13 +81,17 @@ function addProducto(id, token, nombre, imagen, precio) {
              const cartBox = document.createElement("div");
              cartBox.classList.add("cart-box");
              cartBox.innerHTML = `
-                 <img src="${product.imagen}" alt="${product.nombre}" class="cart-img">
-                 <div class="detail-box">
-                     <div class="cart-product-title">${product.nombre}</div>
-                     <div class="cart-price">$${product.precio.toFixed(2)}</div>
-                     <input type="number" value="${product.quantity}" class="cart-quantity" min="1">
-                 </div>
-                 <i class="bx bx-trash cart-remove" onclick="removeFromCart(${product.id})"></i>
+                <div class="cart-box">
+                    <img src="${product.imagen}" alt="${product.nombre}" class="cart-img" alt="Producto">
+                    <div class="cart-product-info">   
+                        <div class="cart-product-title">${product.nombre}</div>
+                        <div class="cart-price">$${product.precio.toFixed(2)}</div>
+                    </div>
+                </div>
+                    <div class="cart-actions">
+                        <input type="number" value="${product.quantity}" class="cart-quantity" min="1">
+                        <span class="bx bx-trash cart-remove" onclick="removeFromCart(${product.id})"></i>
+                    </div>
              `;
      
              // Añade un evento al campo de cantidad para actualizar el precio

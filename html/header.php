@@ -22,7 +22,7 @@ if (file_exists('php/config.php')) {
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preload" href="/css/style.css" as="style" />
     <link rel="preload" href="/css/cart-style.css" as="style" />
-    <link href="../admin/css/sb-admin-2.css" rel="stylesheet">
+    <!-- <link href="../admin/css/sb-admin-2.css" rel="stylesheet"> -->
     <link href="../css/style.css" rel="stylesheet" />
 </head>
 
@@ -73,7 +73,7 @@ if (file_exists('php/config.php')) {
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="nombreAdmin">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="usuario">
                         <?php echo $_SESSION['user_name']; ?>
                     </span>
                     <i class="bx bx-user" id="user-icon"></i>
