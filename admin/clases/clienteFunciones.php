@@ -78,7 +78,7 @@ function mostrarMensajaes(array $errrors){
 }
 
 function login($usuario, $contraseña, $con){
-    $sql = $con->prepare("SELECT id, usuario, contraseña FROM usuarios WHERE usuario LIKE ? LIMIT 1");
+    $sql = $con->prepare("SELECT id, usuario, contraseña, id_cliente FROM usuarios WHERE usuario LIKE ? LIMIT 1");
     $sql->execute([$usuario]);
 
     if($row = $sql->fetch(PDO::FETCH_ASSOC)){
@@ -86,6 +86,7 @@ function login($usuario, $contraseña, $con){
             if($contraseña === $row['contraseña']){
                 $_SESSION['user_id'] = $row['id'];
                 $_SESSION['user_name'] = $row['usuario'];
+                $_SESSION['user_cliente'] = $row['id_cliente'];
                 header("Location: index.php");
                 exit;
             } 
